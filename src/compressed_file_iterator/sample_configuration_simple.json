@@ -1,0 +1,9 @@
+{
+    ".*": {
+        "base_command": {
+            "posix": "/bin/cat"
+        },
+        "base_options": {},
+        "type": "Plain"
+    }
+}
