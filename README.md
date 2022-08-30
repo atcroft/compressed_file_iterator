@@ -3,3 +3,99 @@ Configurable iterator-based access to compressed files.
 
 This is a simple package to provide configurable iterator-based access to compressed files.
 
+### Usage:
+foo.json
+```
+{
+    ".gz": {
+        "base_command": {
+            "posix": "/bin/gzip"
+        },
+        "base_options": {
+            "posix": [ '-d', '-c', ]
+        },
+        "type": "Gzip"
+    },
+    ".*": {
+        "base_command": {
+            "posix": "/bin/cat"
+        },
+        "base_options": {
+            "posix": []
+        },
+        "type": "Plain"
+    }
+}
+```
+
+```py
+import compressed_file_iterator
+# ...
+    my_iterator = compressed_file_iterator.MyIterator('foo.txt',config_file='foo.json')
+
+    for line in my_iterator:
+        print(line)
+# ...
+```
+
+### Installation
+
+_TODO_: (Upload to allow for install via pip.)
+
+```
+$ pip install compressed_file_iterator
+```
+
+### Documentation
+```python
+class compressed_file_iterator():
+        def __init__(self, args, cwd="./", config_file='compressed_file_iterator.json',):
+```
+
+Parameters
+~~~~~~~~~~
+
+* args : list
+    Contains file name to open.
+* cwd : string, optional
+    Working directory.
+* config_file : string, optional
+    JSON configuration defining extensions and how to handle them.
+
+JSON Format
+~~~~~~~~~~~
+```
+{
+    '.extension': {
+        'base_command': {
+            os_name: path_to_executable,
+        },
+        'base_options': [
+            command_line_options
+        ],
+        'type': string
+    },
+}
+```
+
+Parameters
+~~~~~~~~~~
+
+* .extension: string
+
+    A string representation of a file extension, as separated by pathlib.Path().suffixes.
+
+    A default definition should be included for '.*' to be used if no other match can be made.
+
+* base_command: dictionary
+
+    Contains one or more commands, indexed by the value of os.name on the system.
+
+* base_options: list
+
+    Contains zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
+
+* type: string
+
+    String identifier for the compression configuration. (Currently unused.)
+
