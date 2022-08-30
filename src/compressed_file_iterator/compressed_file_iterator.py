@@ -115,7 +115,9 @@ class MyIterator:
     Fake class to iterate over content in either case
     """
 
-    def __init__(self, args, cwd="./", config_file='compressed_file_iterator.json',):
+    def __init__(self, args, cwd="./",
+                 config_file='compressed_file_iterator.json',
+                 ):
         self.args = args
         self.cwd = cwd
 
@@ -143,7 +145,7 @@ class MyIterator:
                 my_args = flatten(
                     (
                         config[suffix_str[i]]["base_command"][my_os],
-                        config[suffix_str[i]]["base_options"],
+                        config[suffix_str[i]]["base_options"][my_os],
                         args[0],
                     )
                 )
@@ -152,7 +154,7 @@ class MyIterator:
             my_args = flatten(
                 (
                     config[".*"]["base_command"][my_os],
-                    config[".*"]["base_options"],
+                    config[".*"]["base_options"][my_os],
                     args[0],
                 )
             )
@@ -191,7 +193,9 @@ def main():
                     'base_command': {
                         'posix': '/bin/cat',
                         },
-                    'base_options': {},
+                    'base_options': {
+                        'posix': [],
+                        },
                     'type': 'Plain',
                     },
                 }
