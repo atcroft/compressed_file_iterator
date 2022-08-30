@@ -64,6 +64,7 @@ Parameters
 
 JSON Format
 ~~~~~~~~~~~
+
 ```
 {
     '.extension': {
