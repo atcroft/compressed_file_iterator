@@ -4,10 +4,16 @@
             "posix": "/bin/7z",
             "nt": "c:/cygwin64/lib/p7zip/7z.exe"
         },
-        "base_options": [
-            "x",
-            "-so"
-        ],
+        "base_options": {
+            "posix": [
+                "x",
+                "-so"
+            ],
+            "nt": [
+                "x",
+                "-so"
+            ]
+        },
         "type": "7zip"
     },
     ".arc": {
@@ -15,9 +21,14 @@
             "posix": "/bin/arc",
             "nt": "c:/cygwin64/bin/arc.exe"
         },
-        "base_options": [
-            "p"
-        ],
+        "base_options": {
+            "posix": [
+                "p"
+            ],
+            "nt": [
+                "p"
+            ]
+        },
         "type": "ARC"
     },
     ".arj": {
@@ -25,9 +36,14 @@
             "posix": "/bin/arj",
             "nt": "c:/cygwin64/bin/arj.exe"
         },
-        "base_options": [
-            "P"
-        ],
+        "base_options": {
+            "posix": [
+                "P"
+            ],
+            "nt": [
+                "p"
+            ]
+        },
         "type": "ARJ"
     },
     ".bz2": {
@@ -35,10 +51,16 @@
             "posix": "/bin/bzip2",
             "nt": "c:/cygwin64/bin/bzip2.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Bzip2"
     },
     ".gz": {
@@ -46,10 +68,16 @@
             "posix": "/bin/gzip",
             "nt": "c:/cygwin64/bin/gzip.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Gzip"
     },
     ".lz4": {
@@ -57,10 +85,16 @@
             "posix": "/bin/lz4",
             "nt": "c:/cygwin64/bin/lz4.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Lz4"
     },
     ".lzma": {
@@ -68,10 +102,16 @@
             "posix": "/bin/lzma",
             "nt": "c:/cygwin64/bin/lzma.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Lzma"
     },
     ".lzo": {
@@ -79,10 +119,16 @@
             "posix": "/bin/lzop",
             "nt": "c:/cygwin64/bin/lzop.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Lzop"
     },
     ".lz": {
@@ -90,10 +136,16 @@
             "posix": "/bin/lzip",
             "nt": "c:/cygwin64/bin/lzip.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Lzip"
     },
     ".*": {
@@ -101,7 +153,10 @@
             "posix": "/bin/cat",
             "nt": "c:/cygwin64/bin/cat.exe"
         },
-        "base_options": [],
+        "base_options": {
+            "posix": [],
+            "nt": []
+        },
         "type": "Plain"
     },
     ".xz": {
@@ -109,10 +164,16 @@
             "posix": "/bin/xz",
             "nt": "c:/cygwin64/bin/xz.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Xz"
     },
     ".Z": {
@@ -120,10 +181,16 @@
             "posix": "/bin/compress",
             "nt": "c:/cygwin64/bin/compress.exe"
         },
-        "base_options": [
-            "-d",
-            "-c"
-        ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Compress"
     },
     ".zip": {
@@ -131,9 +198,14 @@
             "posix": "/bin/unzip",
             "nt": "c:/cygwin64/bin/unzip.exe"
         },
-        "base_options": [
-            "-p"
-        ],
+        "base_options": {
+            "posix": [
+                "-p"
+            ],
+            "nt": [
+                "-p"
+            ]
+        },
         "type": "Zip"
     },
     ".zst": {
@@ -145,6 +217,16 @@
             "-d",
             "-c"
         ],
+        "base_options": {
+            "posix": [
+                "-d",
+                "-c"
+            ],
+            "nt": [
+                "-d",
+                "-c"
+            ]
+        },
         "type": "Zstd"
     },
     ".tar.bz2": {
@@ -152,12 +234,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--bzip2",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--bzip2",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--bzip2",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Bzip2"
     },
     ".tar.gz": {
@@ -165,12 +255,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--gzip",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--gzip",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--gzip",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Gzip"
     },
     ".tar.lzma": {
@@ -178,12 +276,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--lzma",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--lzma",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "-lzma",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Lzma"
     },
     ".tar.lzo": {
@@ -191,12 +297,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--lzop",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--lzop",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--lzop",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Lzop"
     },
     ".tar.lz": {
@@ -204,12 +318,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--lzip",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--lzip",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--lzip",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Lzip"
     },
     ".tar": {
@@ -217,11 +339,18 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar"
     },
     ".tar.xz": {
@@ -229,12 +358,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--xz",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "--xz",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--xz",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Xz"
     },
     ".tar.Z": {
@@ -242,12 +379,20 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "-Z",
-            "-O",
-            "-f"
-        ],
+        "base_options": {
+            "posix": [
+                "-x",
+                "-Z",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "-Z",
+                "-O",
+                "-f"
+            ]
+        },
         "type": "Tar-Compress"
     },
     ".tar.zst": {
@@ -255,11 +400,19 @@
             "posix": "/bin/tar",
             "nt": "c:/cygwin64/bin/tar.exe"
         },
-        "base_options": [
-            "-x",
-            "--zstd",
-            "-O",
-            "-f"
+        "base_options": {
+            "posix": [
+                "-x",
+                "--zstd",
+                "-O",
+                "-f"
+            ],
+            "nt": [
+                "-x",
+                "--zstd",
+                "-O",
+                "-f"
+            ]
         ],
         "type": "Tar-Zstd"
     }
