@@ -93,7 +93,7 @@ Parameters
 
 * base_options: list
 
-    Contains zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
+    Contains zero or more options required by the appropriate base_command  to output content on STDOUT. Indexed by the value of os.name.
 
 * type: string
 
