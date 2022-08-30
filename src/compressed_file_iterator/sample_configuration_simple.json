@@ -3,7 +3,9 @@
         "base_command": {
             "posix": "/bin/cat"
         },
-        "base_options": {},
+        "base_options": {
+            "posix": []
+        },
         "type": "Plain"
     }
 }
