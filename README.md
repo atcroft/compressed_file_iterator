@@ -71,9 +71,8 @@ JSON Format
         'base_command': {
             os_name: path_to_executable,
         },
-        'base_options': [
-            command_line_options
-        ],
+        'base_options': {
+            os_name: [ command_line_options ],
         'type': string
     },
 }
@@ -92,9 +91,9 @@ Parameters
 
     Contains one or more commands, indexed by the value of os.name on the system.
 
-* base_options: list
+* base_options: dictionary
 
-    Contains zero or more options required by the appropriate base_command  to output content on STDOUT. Indexed by the value of os.name.
+    Contains one or more lists consisting of zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
 
 * type: string
 
