@@ -58,7 +58,7 @@ Class definition
 class compressed_file_iterator():
         def __init__(self, 
                      args, 
-                     cwd="./",
+                     cwd='./',
                      config_file='compressed_file_iterator.json',
                      case_sensitive=True,
                      ):
