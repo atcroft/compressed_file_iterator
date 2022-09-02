@@ -42,6 +42,7 @@ import compressed_file_iterator
 # ...
 ```
 
+
 ### Installation
 
 _TODO_: (Upload to allow for install via pip.)
@@ -49,6 +50,7 @@ _TODO_: (Upload to allow for install via pip.)
 ```
 $ pip install compressed_file_iterator
 ```
+
 
 ### Documentation
 Class definition
@@ -62,9 +64,9 @@ class compressed_file_iterator():
                      ):
 
 
+
 Parameters
 ~~~~~~~~~~
-
 - args : list
   - Contains file name to open.
 - cwd : string, optional
@@ -92,14 +94,14 @@ JSON Format
 }
 ```
 
+
+
 Parameters
 ~~~~~~~~~~
-
 - .extension: string
   - A string representation of a file extension, as separated by pathlib.Path().suffixes.
   - _A default definition should be included for '.*' to be used if 
 no other match can be made._
-
 - base_command: dictionary
   - Contains one or more commands, indexed by the value of os.name on the system.
 
@@ -107,7 +109,6 @@ no other match can be made._
   - Contains one or more lists consisting of zero or more options 
 required by the appropriate base_command to output content on STDOUT.
 Indexed by the value of os.name.
-
 - type: string
   - String identifier for the compression configuration. (Currently unused.)
 
