@@ -53,7 +53,6 @@ $ pip install compressed_file_iterator
 ### Documentation
 Class definition
 ~~~~~~~~~~~~~~~~
-```
 class compressed_file_iterator():
         def __init__(self, 
                      args, 
@@ -61,7 +60,6 @@ class compressed_file_iterator():
                      config_file='compressed_file_iterator.json',
                      case_sensitive=True,
                      ):
-```
 
 Parameters
 ~~~~~~~~~~
