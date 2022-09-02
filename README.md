@@ -82,14 +82,14 @@ JSON Format
 ~~~~~~~~~~~
 ```
 {
-    '.extension': {
-        'base_command': {
-            os_name: path_to_executable,
+        '.extension': {
+                'base_command': {
+                    os_name: path_to_executable,
+                },
+                'base_options': {
+                        os_name: [ command_line_options ],
+                'type': string
         },
-        'base_options': {
-            os_name: [ command_line_options ],
-        'type': string
-    },
 }
 ```
 
