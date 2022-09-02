@@ -74,7 +74,9 @@ Parameters
 - config_file : string, optional
   - JSON configuration defining extensions and how to handle them.
 - case_sensitive : boolean, optional
-  - Perform match attempts against JSON configuration in a case-sensitive manner. If False, process via string.casefold() before testing. (Default: True)
+  - Perform match attempts against JSON configuration in a 
+case-sensitive manner. If False, process via string.casefold() 
+before testing. (Default: True)
 
 
 JSON Format
@@ -98,13 +100,16 @@ Parameters
 
 - .extension: string
   - A string representation of a file extension, as separated by pathlib.Path().suffixes.
-  - **A default definition should be included for '.\*' to be used if no other match can be made.**
+  - _A default definition should be included for '.*' to be used if 
+no other match can be made._
 
 - base_command: dictionary
   - Contains one or more commands, indexed by the value of os.name on the system.
 
 - base_options: dictionary
-  - Contains one or more lists consisting of zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
+  - Contains one or more lists consisting of zero or more options 
+required by the appropriate base_command to output content on STDOUT.
+Indexed by the value of os.name.
 
 - type: string
   - String identifier for the compression configuration. (Currently unused.)
