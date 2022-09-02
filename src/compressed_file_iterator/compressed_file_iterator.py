@@ -117,40 +117,68 @@ class MyIterator:
 
     def __init__(self, args, cwd="./",
                  config_file='compressed_file_iterator.json',
+                 case_sensitive=True,
                  ):
         self.args = args
         self.cwd = cwd
+        self.case_sensitive = case_sensitive
 
-        config = None
+        config = {}
+        config_cf = {}
         with open(config_file, encoding="utf-8") as f:
             config = json.load(f)
+
+        for k in config.keys():
+            config_cf[k.casefold()] = {}
+            config_cf[k.casefold()] = config[k]
 
         suffix = pathlib.Path(args[0]).suffixes
         suffix_len = len(suffix)
 
         suffix_str = []
-        for i in range(suffix_len + 1):
+        suffix_str_cf = []
+        for i in range(suffix_len):
             suffix_str.append("")
+            suffix_str_cf.append("")
             for j in range(i, suffix_len):
                 suffix_str[i] += suffix[j]
+                suffix_str_cf[i] += suffix[j].casefold()
 
         # # foo = ['as', 'df', 'gh', 'jk']
         # # print(list(left_join(reversed(foo))))
         suffix_str = list(reversed(list(left_join(reversed(suffix)))))
+        for i in range(suffix_len):
+            suffix_str_cf[i] = suffix_str[i].casefold()
 
         my_os = os.name
         my_args = list()
         for i in range(len(suffix_str)):
-            if suffix_str[i] in config:
-                my_args = flatten(
-                    (
-                        config[suffix_str[i]]["base_command"][my_os],
-                        config[suffix_str[i]]["base_options"][my_os],
-                        args[0],
+            flag = suffix_str[i] in config
+            if not self.case_sensitive:
+                flag = suffix_str_cf[i] in config_cf
+
+            if flag:
+                if not self.case_sensitive:
+                    print(suffix_str[i], " matches")
+                    my_args = flatten(
+                        (
+                            config_cf[suffix_str_cf[i]]["base_command"][my_os],
+                            config_cf[suffix_str_cf[i]]["base_options"][my_os],
+                            args[0],
+                        )
                     )
-                )
+                else:
+                    print(suffix_str[i], " matches")
+                    my_args = flatten(
+                        (
+                            config[suffix_str[i]]["base_command"][my_os],
+                            config[suffix_str[i]]["base_options"][my_os],
+                            args[0],
+                        )
+                    )
                 break
         else:
+            print("Using default configuration")
             my_args = flatten(
                 (
                     config[".*"]["base_command"][my_os],
@@ -215,7 +243,7 @@ def main():
         (False, "numbers.tar.lzo"),
         (False, "numbers.tar.xz"),
         (False, "numbers.tar.zst"),
-        (True, "numbers.txt"),
+        (True,  "numbers.txt"),
         (False, "numbers.txt.Z"),
         (False, "numbers.txt.bz2"),
         (False, "numbers.txt.gz"),
@@ -228,9 +256,12 @@ def main():
     ]
     for go, fn in tests:
         if go:
-            args = [ fn, ]
-            # shell = MyIterator(args, config_file='foo.json', )
-            shell = MyIterator(args, config_file='foo.json', )
+            args = [fn, ]
+            # shell = MyIterator(args,
+            #                    config_file='foo.json',
+            #                    case_sensitive=False,
+            #                    )
+            shell = MyIterator(args, config_file='foo.json',)
             if shell is not None:
                 c = 0
                 for line in shell:
