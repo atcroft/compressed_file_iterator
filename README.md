@@ -53,8 +53,9 @@ $ pip install compressed_file_iterator
 
 
 ### Documentation
+
 Class definition
-~~~~~~~~~~~~~~~~
+
 ```py
 class compressed_file_iterator():
         def __init__(self, 
