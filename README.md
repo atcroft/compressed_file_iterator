@@ -31,7 +31,11 @@ foo.json
 ```py
 import compressed_file_iterator
 # ...
-    my_iterator = compressed_file_iterator.MyIterator('foo.txt',config_file='foo.json')
+    my_iterator = compressed_file_iterator.MyIterator(
+                                                      'foo.txt',
+                                                      config_file='foo.json',
+                                                      case_sensitive=True,
+                                                      )
 
     for line in my_iterator:
         print(line)
@@ -49,7 +53,12 @@ $ pip install compressed_file_iterator
 ### Documentation
 ```python
 class compressed_file_iterator():
-        def __init__(self, args, cwd="./", config_file='compressed_file_iterator.json',):
+        def __init__(self, 
+                     args, 
+                     cwd="./",
+                     config_file='compressed_file_iterator.json',
+                     case_sensitive=True,
+                     ):
 ```
 
 Parameters
@@ -58,9 +67,11 @@ Parameters
 * args : list
     Contains file name to open.
 * cwd : string, optional
-    Working directory.
+    Working directory. (Default: '.').
 * config_file : string, optional
     JSON configuration defining extensions and how to handle them.
+* case_sensitive : boolean, optional
+    Perform match attempts against JSON configuration in a case-sensitive manner. If False, process via string.casefold() before testing. (Default: True)
 
 JSON Format
 ~~~~~~~~~~~
@@ -98,4 +109,11 @@ Parameters
 * type: string
 
     String identifier for the compression configuration. (Currently unused.)
+
+
+Acknowledgements
+~~~~~~~~~~~~~~~~
+
+* To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
+
 
