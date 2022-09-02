@@ -54,7 +54,7 @@ $ pip install compressed_file_iterator
 
 ### Documentation
 
-Class definition
+####Class definition
 
 ```py
 class compressed_file_iterator():
@@ -68,7 +68,7 @@ class compressed_file_iterator():
 
 
 
-Parameters
+####Parameters
 - args : list
   - Contains file name to open.
 - cwd : string, optional
@@ -82,7 +82,7 @@ before testing. (Default: True)
 
 
 
-JSON Format
+####JSON Format
 ```
 {
         '.extension': {
@@ -98,7 +98,7 @@ JSON Format
 
 
 
-Parameters
+####Parameters
 - .extension: string
   - A string representation of a file extension, as separated by pathlib.Path().suffixes.
   - _A default definition should be included for '.*' to be used if 
@@ -114,7 +114,7 @@ Indexed by the value of os.name.
 
 
 
-Acknowledgements
+## Acknowledgements
 - To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
 
 
