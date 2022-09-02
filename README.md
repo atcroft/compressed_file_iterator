@@ -69,7 +69,6 @@ class compressed_file_iterator():
 
 
 Parameters
-~~~~~~~~~~
 - args : list
   - Contains file name to open.
 - cwd : string, optional
@@ -82,8 +81,8 @@ case-sensitive manner. If False, process via string.casefold()
 before testing. (Default: True)
 
 
+
 JSON Format
-~~~~~~~~~~~
 ```
 {
         '.extension': {
@@ -100,14 +99,12 @@ JSON Format
 
 
 Parameters
-~~~~~~~~~~
 - .extension: string
   - A string representation of a file extension, as separated by pathlib.Path().suffixes.
   - _A default definition should be included for '.*' to be used if 
 no other match can be made._
 - base_command: dictionary
   - Contains one or more commands, indexed by the value of os.name on the system.
-
 - base_options: dictionary
   - Contains one or more lists consisting of zero or more options 
 required by the appropriate base_command to output content on STDOUT.
@@ -118,8 +115,6 @@ Indexed by the value of os.name.
 
 
 Acknowledgements
-~~~~~~~~~~~~~~~~
-
 - To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
 
 
