@@ -53,7 +53,6 @@ $ pip install compressed_file_iterator
 ### Documentation
 Class definition
 ~~~~~~~~~~~~~~~~
-
 ```
 class compressed_file_iterator():
         def __init__(self, 
@@ -81,7 +80,6 @@ before testing. (Default: True)
 
 JSON Format
 ~~~~~~~~~~~
-
 ```
 {
     '.extension': {
