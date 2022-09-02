@@ -98,7 +98,7 @@ Parameters
 
 - .extension: string
   - A string representation of a file extension, as separated by pathlib.Path().suffixes.
-  - **A default definition should be included for '.*' to be used if no other match can be made.**
+  - **A default definition should be included for '.\*' to be used if no other match can be made.**
 
 - base_command: dictionary
   - Contains one or more commands, indexed by the value of os.name on the system.
