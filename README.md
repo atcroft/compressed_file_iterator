@@ -67,14 +67,14 @@ class compressed_file_iterator():
 Parameters
 ~~~~~~~~~~
 
-* args : list
-    Contains file name to open.
-* cwd : string, optional
-    Working directory. (Default: '.').
-* config_file : string, optional
-    JSON configuration defining extensions and how to handle them.
-* case_sensitive : boolean, optional
-    Perform match attempts against JSON configuration in a case-sensitive manner. If False, process via string.casefold() before testing. (Default: True)
+- args : list
+  - Contains file name to open.
+- cwd : string, optional
+  - Working directory. (Default: '.').
+- config_file : string, optional
+  - JSON configuration defining extensions and how to handle them.
+- case_sensitive : boolean, optional
+  - Perform match attempts against JSON configuration in a case-sensitive manner. If False, process via string.casefold() before testing. (Default: True)
 
 
 JSON Format
@@ -96,28 +96,24 @@ JSON Format
 Parameters
 ~~~~~~~~~~
 
-* .extension: string
+- .extension: string
+  - A string representation of a file extension, as separated by pathlib.Path().suffixes.
+  - **A default definition should be included for '.*' to be used if no other match can be made.**
 
-    A string representation of a file extension, as separated by pathlib.Path().suffixes.
+- base_command: dictionary
+  - Contains one or more commands, indexed by the value of os.name on the system.
 
-    **A default definition should be included for '.*' to be used if no other match can be made.**
+- base_options: dictionary
+  - Contains one or more lists consisting of zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
 
-* base_command: dictionary
+- type: string
+  - String identifier for the compression configuration. (Currently unused.)
 
-    Contains one or more commands, indexed by the value of os.name on the system.
-
-* base_options: dictionary
-
-    Contains one or more lists consisting of zero or more options required by the appropriate base_command to output content on STDOUT. Indexed by the value of os.name.
-
-* type: string
-
-    String identifier for the compression configuration. (Currently unused.)
 
 
 Acknowledgements
 ~~~~~~~~~~~~~~~~
 
-* To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
+- To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
 
 
