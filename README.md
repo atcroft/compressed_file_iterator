@@ -51,6 +51,9 @@ $ pip install compressed_file_iterator
 ```
 
 ### Documentation
+Class definition
+~~~~~~~~~~~~~~~~
+
 ```python
 class compressed_file_iterator():
         def __init__(self, 
@@ -72,6 +75,7 @@ Parameters
     JSON configuration defining extensions and how to handle them.
 * case_sensitive : boolean, optional
     Perform match attempts against JSON configuration in a case-sensitive manner. If False, process via string.casefold() before testing. (Default: True)
+
 
 JSON Format
 ~~~~~~~~~~~
@@ -96,7 +100,7 @@ Parameters
 
     A string representation of a file extension, as separated by pathlib.Path().suffixes.
 
-    A default definition should be included for '.*' to be used if no other match can be made.
+    **A default definition should be included for '.*' to be used if no other match can be made.**
 
 * base_command: dictionary
 
