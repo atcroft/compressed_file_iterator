@@ -61,6 +61,7 @@ class compressed_file_iterator():
                      case_sensitive=True,
                      ):
 
+
 Parameters
 ~~~~~~~~~~
 
