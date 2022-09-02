@@ -54,7 +54,7 @@ $ pip install compressed_file_iterator
 Class definition
 ~~~~~~~~~~~~~~~~
 
-```python
+```py
 class compressed_file_iterator():
         def __init__(self, 
                      args, 
