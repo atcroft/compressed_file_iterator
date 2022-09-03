@@ -34,7 +34,7 @@ def left_join(strings: list[str]):
     """
     Joins together an list of strings, returning as a single string.
 
-    (Thanks to the members of #python on Libra.Chat for this
+    (Thanks to the members of #python on Libera.Chat for this
     function's base code.)
 
     Args:
@@ -53,7 +53,7 @@ def flatten(x):
     """
     Merge possibly multi-level lists into a single list.
 
-    (Thanks to the members of #python on Libra.Chat for this
+    (Thanks to the members of #python on Libera.Chat for this
     function's base code.)
 
     Args:
