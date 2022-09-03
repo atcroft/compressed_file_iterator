@@ -116,5 +116,5 @@ Indexed by the value of os.name.
 
 ## Acknowledgements
 - To my friend, Chris Jones, for suggesting I add the option of case-insensitive extension matching.
-- To the members of #python on the Libra.Chat IRC network, for patiently enduring my numerous questions.
+- To the members of #python on the Libera.Chat IRC network, for patiently enduring my numerous questions.
 
