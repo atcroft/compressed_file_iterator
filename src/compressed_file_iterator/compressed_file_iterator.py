@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 # vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:
-"""
-Example code to create an iterator (for use in a for-loop) that can read
-a GZipped file using '/usr/bin/zcat' as a subprocess or a regular file
-using Python's internal file handling methods. The contents of the file
-are returned by the iterator one line at a time, with CR/LF characters
-('\r' and '\n') stripped.
+"""Compressed file iterator module and sample code.
 
-For testing, 'numbers.txt' was a text file containing the numbers 1 to
-50_000 in order, each on a single line. For other compression methods
-such as gzip, the compressed version of the file would be named
-'numbers.txt.gz'.
+Example code to create an iterator (for use in a for-loop). Uses a JSON
+configuration file to define known extensions and appropriate handling
+program and required options. (A default handler, such as 'cat' on *nix
+systems, MUST be defined.) File contents are returned line by line,
+WITH CR/LF CHARACTERS ('\r' and '\n') STRIPPED.
+
+For testing (os.name = 'posix' ONLY), module will generate a basic
+configuration file ('foo.json') defining only a default handler ('/bin/cat')
+and 'numbers.txt' (a text file containing the numbers 1 to 50_000 in order,
+each on a single line).
 """
 
 # Subprocess code based on:
@@ -30,6 +31,18 @@ import subprocess
 
 
 def left_join(strings: list[str]):
+    """
+    Joins together an list of strings, returning as a single string.
+
+    (Thanks to the members of #python on Libra.Chat for this
+    function's base code.)
+
+    Args:
+        strings: List of strings
+
+    Yields:
+        acc: String
+    """
     acc = ""
     for s in strings:
         acc = s + acc
@@ -37,6 +50,18 @@ def left_join(strings: list[str]):
 
 
 def flatten(x):
+    """
+    Merge possibly multi-level lists into a single list.
+
+    (Thanks to the members of #python on Libra.Chat for this
+    function's base code.)
+
+    Args:
+        x: List of strings and/or lists
+
+    Returns:
+        result: List
+    """
     result = []
     for el in x:
         if isinstance(x, collections.abc.Iterable) and not isinstance(el, str):
@@ -50,10 +75,20 @@ def flatten(x):
 
 class Shell:
     """
-    Run a command and iterate over the stdout/stderr lines
+    Run a command as a subprocess and iterate over the stdout/stderr lines.
     """
 
     def __init__(self, args, cwd="./"):
+        """
+        Initialize the object by creating an appropriate subprocess.
+
+        Args:
+            args: List consisting of the subprocess executable at
+                index 0, executable options at indicies [1 .. (n-1)],
+                and file name at index n.
+            cwd: Current working directory for subprocess
+                (default: current directory ("./")).
+        """
         self.args = args
 
         self.pro_cess = subprocess.Popen(
@@ -66,13 +101,31 @@ class Shell:
         self.code = ""
 
     def __iter__(self):
+        """
+        Returns the iterator object itself. Required for the iterator protocol.
+
+        Returns:
+            self: Object
+        """
         return self
 
     def __next__(self):
+        """
+        Returns the next item from the iterator. Required for the iterator
+        protocol.
+
+        Returns:
+            self.line: String (with CRs/LFs stripped)
+
+        Raises:
+            StopIteration: Program has ended (self.code is None) and
+                subprocess pipe is empty.
+        """
         self.line = self.pro_cess.stdout.readline()
         self.code = self.pro_cess.poll()
 
         do_it_001 = False
+        # do_it_001 = True
         if do_it_001:
             print("self.code = ")
             pprint.pprint(self.code)
@@ -87,10 +140,18 @@ class Shell:
 
 class MyFile:
     """
-    Open a file and iterate over the lines
+    Open a file and iterate over the lines. (UNUSED)
     """
 
     def __init__(self, args, cwd="./"):
+        """
+        Initialize the object by opening a file.
+
+        Args:
+            args: List consisting of the file name at index 0.
+            cwd: Current working directory (UNUSED)
+                (default: current directory ("./")).
+        """
         self.args = args
         self.cwd = cwd
         self.fn = args[0]
@@ -98,27 +159,63 @@ class MyFile:
         self.line = ""
 
     def __iter__(self):
+        """
+        Returns the iterator object itself. Required for the iterator protocol.
+
+        Returns:
+            self: Object
+        """
         return self
 
     def __next__(self):
-        self.line = self.fh.readline()
+        """
+        Returns the next item from the iterator. Required for the iterator
+        protocol.
+
+        Returns:
+            self.line: String (with CRs/LFs stripped)
+
+        Raises:
+            StopIteration: Program has ended (self.code is None) and
+                subprocess pipe is empty.
+        """
+        if self.fh.closed() is True:
+            raise StopIteration
+
+        if self.fh.readable():
+            self.line = self.fh.readline()
+
         if self.line == "":
             raise StopIteration
         return str(self.line).rstrip("\r\n")
 
     def __del__(self):
+        """
+        Close file before object destruction.
+        """
         self.fh.close()
 
 
 class MyIterator:
     """
-    Fake class to iterate over content in either case
+    Hide use of 'Shell' or 'MyFile' classes behind a common interface.
     """
 
     def __init__(self, args, cwd="./",
                  config_file='compressed_file_iterator.json',
                  case_sensitive=True,
                  ):
+        """
+        Determining the configuration to use and creates an appropriate object.
+
+        Args:
+            args: List consisting of the file name at index 0.
+            cwd: Current working directory for subprocess
+                (default: current directory ("./")).
+            case_sensitive: Should comparison of file extension to 
+                configurations be case sensitive? (default: True)
+        """
+        self.args = args
         self.args = args
         self.cwd = cwd
         self.case_sensitive = case_sensitive
@@ -197,9 +294,26 @@ class MyIterator:
         #     self.mi = MyFile(args)
 
     def __iter__(self):
+        """
+        Returns the iterator object itself. Required for the iterator protocol.
+
+        Returns:
+            self: Object
+        """
         return self.mi
 
     def __next__(self):
+        """
+        Returns the next item from the iterator. Required for the iterator
+        protocol.
+
+        Returns:
+            self.line: String (with CRs/LFs stripped)
+
+        Raises:
+            StopIteration: Program has ended (self.code is None) and
+                subprocess pipe is empty, or end of file is reached.
+        """
         line = self.__next__()
         if line == "":
             raise StopIteration
