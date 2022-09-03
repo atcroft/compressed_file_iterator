@@ -322,7 +322,7 @@ class MyIterator:
 
 def main():
     """
-    Main testing routine.
+    Basic testing routine.
     """
 
     if not os.path.exists('numbers.txt'):
