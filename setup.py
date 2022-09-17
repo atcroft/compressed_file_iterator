@@ -34,8 +34,8 @@ setup(
     packages=find_packages(where="src"),  # Required
     python_requires=">=3",
     project_urls={  # Optional
-        "Bug Reports": "https://github.com/pypa/sampleproject/issues",
-        "Source": "https://github.com/pypa/sampleproject/",
+        "Bug Reports": "https://github.com/atcroft/compressed_file_iterator/issues",
+        "Source": "https://github.com/atcroft/compressed_file_iterator/",
     },
 )
 
