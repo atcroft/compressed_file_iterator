@@ -26,8 +26,8 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
-        "System :: Archiving",
-        "Text :: Processing :: filters",
+        "Topic :: System :: Archiving",
+        "Topic :: Text Processing :: Filters",
     ],
     keywords="iterator, archived, compressed",  # Optional
     package_dir={"": "src"},  # Optional
