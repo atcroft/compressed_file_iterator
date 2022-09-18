@@ -4,7 +4,6 @@ import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
 
-long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     # $ pip install sampleproject
@@ -13,6 +12,8 @@ setup(
     name="compressed_file_iterator",  # Required
     version="0.0.1",  # Required
     description="Configurable iterator-based access to compressed files.",  # Optional
+    long_description=(here / "README.md").read_text(encoding="utf-8"),
+    long_description_content_type='text/markdown',
     url="https://github.com/atcroft/compressed_file_iterator",  # Optional
     author="Albert Croft",  # Optional
     classifiers=[  # Optional
