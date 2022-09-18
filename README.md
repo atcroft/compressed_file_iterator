@@ -45,8 +45,6 @@ import compressed_file_iterator
 
 ### Installation
 
-_TODO_: (Upload to allow for install via pip.)
-
 ```
 $ pip install compressed_file_iterator
 ```
